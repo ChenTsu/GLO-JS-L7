@@ -8,8 +8,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
   
   let timerId  = setInterval(()=>{
     timer.setMilliseconds( timer.getMilliseconds() + 1000 );
+    let tmp = [timer.getHours().toString(), timer.getMinutes().toString(), timer.getSeconds().toString()];
   
-    timerBox.textContent = timer.getHours() + ':' + timer.getMinutes() + ':' + timer.getSeconds();
+    for (let i=0; i<3; i++){
+      if (tmp[i].length === 1){
+        tmp[i] = '0' + tmp[i];
+      }
+    }
+    timerBox.textContent = tmp.join(':');
   }, 1000);
   
   console.log(timerId);
